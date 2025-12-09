@@ -1,217 +1,36 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor de Tareas</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            padding: 20px;
-        }
-
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-            background: white;
-            border-radius: 16px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-        }
-
-        .header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 30px;
-            text-align: center;
-        }
-
-        .header h1 {
-            font-size: 2rem;
-            margin-bottom: 10px;
-        }
-
-        .add-task-form {
-            padding: 30px;
-            background: #f8f9fa;
-            border-bottom: 1px solid #e0e0e0;
-        }
-
-        .form-group {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 15px;
-        }
-
-        .form-group input,
-        .form-group select {
-            flex: 1;
-            padding: 12px 16px;
-            border: 2px solid #e0e0e0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: #667eea;
-        }
-
-        .btn {
-            padding: 12px 24px;
-            border: none;
-            border-radius: 8px;
-            font-size: 1rem;
-            cursor: pointer;
-            transition: all 0.3s;
-            font-weight: 600;
-        }
-
-        .btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-
-        .btn-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
-        }
-
-        .tasks-container {
-            padding: 30px;
-        }
-
-        .task-item {
-            background: white;
-            border: 2px solid #e0e0e0;
-            border-radius: 12px;
-            padding: 20px;
-            margin-bottom: 15px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            transition: all 0.3s;
-        }
-
-        .task-item:hover {
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-            transform: translateY(-2px);
-        }
-
-        .task-info {
-            flex: 1;
-        }
-
-        .task-title {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: #333;
-            margin-bottom: 8px;
-        }
-
-        .task-status {
-            display: inline-block;
-            padding: 6px 12px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-        }
-
-        .status-lista {
-            background: #e3f2fd;
-            color: #1976d2;
-        }
-
-        .status-en-progreso {
-            background: #fff3e0;
-            color: #f57c00;
-        }
-
-        .status-finalizada {
-            background: #e8f5e9;
-            color: #388e3c;
-        }
-
-        .task-actions {
-            display: flex;
-            gap: 10px;
-        }
-
-        .btn-small {
-            padding: 8px 16px;
-            font-size: 0.9rem;
-        }
-
-        .btn-danger {
-            background: #f44336;
-            color: white;
-        }
-
-        .btn-danger:hover {
-            background: #d32f2f;
-        }
-
-        .empty-state {
-            text-align: center;
-            padding: 60px 20px;
-            color: #999;
-        }
-
-        .empty-state svg {
-            width: 80px;
-            height: 80px;
-            margin-bottom: 20px;
-            opacity: 0.3;
-        }
-
-        .empty-state h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-        }
-    </style>
+    <title>Tasker</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <h1>📋 Gestor de Tareas</h1>
-            <p>Organiza tu trabajo de forma eficiente</p>
-        </div>
-
-        <div class="add-task-form">
-            <div class="form-group">
+    <div class="advise">
+        <h1 id="advise-title">TASKER</h1>
+        <p id="advise-text">Tasker es un sitio web diseñado para ayudarte a organizar tu día de forma rápida y sin complicaciones.
+            Con su lista de tareas puedes agregar, editar o marcar actividades como “En progreso”, “Lista” o “Finalizada”, manteniendo todo en orden con un solo vistazo.
+            Su interfaz es simple, moderna y pensada para que gestiones tus pendientes de manera eficiente, sin distracciones.
+        </p>
+    </div>
+    <div class="body">
+        <div class="body-task__create">
                 <input type="text" id="taskInput" placeholder="Nueva tarea..." />
                 <select id="statusSelect">
-                    <option value="Lista">Lista</option>
+                    <option value="Por Iniciar">Por Iniciar</option>
                     <option value="En progreso">En progreso</option>
                     <option value="Finalizada">Finalizada</option>
                 </select>
                 <button class="btn btn-primary" id="addTaskBtn">
-                    ➕ Agregar
+                Agregar
                 </button>
-            </div>
         </div>
+        <div class="body-task__view">
 
-        <div class="tasks-container" id="tasksContainer">
-            <!-- Las tareas se insertarán aquí dinámicamente -->
-            <div class="empty-state" id="emptyState">
-                <svg fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h6a1 1 0 100-2H7zm0 4a1 1 0 000 2h6a1 1 0 100-2H7z" clip-rule="evenodd"></path>
-                </svg>
-                <h3>No hay tareas</h3>
-                <p>Agrega tu primera tarea para comenzar</p>
-            </div>
         </div>
     </div>
+
+    <script src="./script.js"></script>
 </body>
 </html>
